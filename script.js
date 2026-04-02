@@ -1,10 +1,3 @@
-  const ard = document.querySelector(".ard-sosmed");
-  const attention_whore = document.querySelector(".attention.whore");
-
-  function ardFunction() {
-    ard.classList.toggle("open");
-    attention_whore.classList.remove("whore");
-  }
 (function () {
   "use strict";
 
