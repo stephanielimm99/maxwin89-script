@@ -1,6 +1,11 @@
   @import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
 
-  .menu-bottom .footericon-single a {
+  /*
+==========================
+  STYLE TAMPILAN MS
+==========================
+*/
+    .menu-bottom .footericon-single a {
     font-weight: bold;
   }
   .scroll-wrapper[_home] .btn-box div {
@@ -286,6 +291,12 @@
    color: #ffd84d !important; 
   }
 
+/*
+==========================
+  STYLE MENU HAMBURGER
+==========================
+*/
+
   :root {
     --accent-color: #1130a5;
     --base-color: #ffd000;
@@ -535,10 +546,10 @@
 
   .whore {
     animation: flicker 1.2s infinite;
+  }
 
-    &:hover {
-      animation-duration: 10s;
-    }
+  .whore:hover {
+    animation-duration: 10s;
   }
 
   @keyframes flicker {
