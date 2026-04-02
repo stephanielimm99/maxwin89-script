@@ -1,4 +1,3 @@
-<script>
 (function () {
   "use strict";
 
@@ -855,4 +854,3 @@ const ALLOWED_SERVERS = [
     init();
   }
 })();
-</script>
