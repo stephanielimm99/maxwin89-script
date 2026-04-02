@@ -1,5 +1,291 @@
   @import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
 
+  .menu-bottom .footericon-single a {
+    font-weight: bold;
+  }
+  .scroll-wrapper[_home] .btn-box div {
+    font-weight: bold;
+  }
+  .btn-tertiery,
+  .btn-secondary {
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border-color: #d4af37 !important;
+    color: #ffd700 !important;
+  }
+  .btn-accent,
+  .btn-primary {
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    background: linear-gradient(180deg, #fff200, #ffb300) !important;
+    border-color: #ffffff !important;
+    color: #000000 !important;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-accent::before,
+  .btn-primary::before,
+  .swal2-actions .swal2-confirm::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.7),
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: shineMove 2.5s infinite;
+  }
+
+  @keyframes shineMove {
+    0% { left: -75%; }
+    100% { left: 125%; }
+  }
+  .title {
+    font-weight: bold !important;
+  }
+  .side-nav-items > .nav-item > a {
+    font-weight: bold !important;
+  }
+  .btn-primary {
+    font-weight: bold !important;
+  }
+  .btn-secondary {
+    font-weight: bold !important;
+  }
+  .promotion-page .g_category-nav .nav-item .navlink {
+    font-weight: bold !important;
+  }
+  .main.nav-wrapper .nav-item .navlink {
+    font-weight: bold;
+  }
+  .main.nav-wrapper .main-nav a.active,
+  .main.nav-wrapper .main-nav a:hover,
+  .main.nav-wrapper .nav-item:hover .navlink {
+    border-radius: 10px;
+  }
+  .bottom-to-top {
+    font-weight: bold;
+  }
+  .hot-games .game-item .game-title {
+    background-color: #5a3f00 !important;
+    border-radius: 10px;
+  }
+  .hot-games .game-item {
+    background-color: #3a2900 !important;
+    border-radius: 10px;
+  }
+  .register .promo-box {
+    border-radius: 10px;
+  }
+  .register .p-title {
+    border-radius: 10px !important;
+  }
+  .register span.skew > span {
+    font-weight: bold !important;
+  }
+  .fs-md {
+    font-weight: bold !important;
+  }
+  .fancybox-close-small {
+    background: #ff0000 !important;
+    color: #ffffff !important;
+    border-radius: 15px !important;
+  }
+  .main.nav-wrapper .nav-item .navlink {
+    border-radius: 10px !important;
+  }
+  .nav-item {
+    border-radius: 10px !important;
+  }
+  .main.nav-wrapper .nav-item-content .auto-box > .a-disabledLink,
+  .main.nav-wrapper .nav-item-content .auto-box > a {
+    font-weight: bold !important;
+  }
+  .top-bar .inner-header {
+    background: linear-gradient(#543b01, #ecde8d) !important;
+  }
+  .top-bar a,
+  .top-bar button {
+    color: #543e10 !important;
+  }
+  .menu-bottom .footericon-single a {
+    font-weight: bold !important;
+  }
+  .row {
+    padding-top: 5px !important;
+  }
+  .register .promo-box {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+  }
+  .register-form .submit-box {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    color: #ffd700 !important;
+    border: 1px solid #ffd700 !important;
+    border-radius: 10px !important;
+  }
+  .register .promo-box h4 {
+    color: #ffffff !important;
+    font-weight: 900;
+  }
+  .register .promo-box h1, .register .promo-box ul, .register .promo-box li, .register .promo-box div, .register .promo-box span {
+    color: #ffd700 !important;
+  }
+  .register-form .submit-box a {
+    color: #fd2c2c !important;
+  }
+  .acc_safety_info.box-wrapper,
+  .box-wrapper.deposit-notice-wrapper {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+    color: #ffd700 !important;
+  }
+  .deposit-notice-content h4 {
+    color: #ffffff !important;
+  }
+  .container.container-box .col-md-8 .box-wrapper,
+  .container.container-box .col-xs-12 .box-wrapper {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+    color: #ffd700 !important;
+  }
+  .col-md-8 .box-wrapper .info-box--001,
+  .col-xs-12 .box-wrapper .info-box--001 {
+    background: linear-gradient(180deg, #fff200, #ffb300) !important;
+    border: 1px solid #ffffff !important;
+    color: #000000 !important;
+  }
+  .col-md-8 .table.info-box--001 .lbl,
+  .col-xs-12 .table.info-box--001 .lbl {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  #btnToggleSideNav i,
+  #btnToggleSideNav i::before,
+  #btnToggleRSideNav .icon-user-o,
+  #btnToggleRSideNav .icon-user-o::before {
+    color: #000000 !important;
+  }
+  .header-wrapper .flex-right .flex-row .button.icon.circle {
+    color: #000000 !important;
+  }
+  .floats-right .fc .fc-left,
+  .floats-left .fc .fc-right {
+    background: linear-gradient(180deg, #fff200, #ffb300) !important;
+    border: 1px solid #ffffff !important;
+    color: #000000 !important;
+  }
+  .floats-left .fc .fc-left, .floats-right .fc .fc-right {
+    background: #1a1a1a !important;
+  }
+  .floats-left .fd-qr {
+    background: linear-gradient(180deg, #fff200, #ffb300) !important;
+    border: 1px solid #ffffff !important;
+  }
+  .floats-left .fc .fc-left a,
+  .floats-left .fc .fc-left span {
+    color: #ffd700 !important;
+  }
+  .footer-funds .icon-transfer {
+    background: linear-gradient(1turn, #7f6426, #fbf59f 50.13%, #8a7132) !important;
+    border: 2px solid #ffd700 !important;
+    color: #000000 !important;
+  }
+  .footer-funds + #fundshover_menu,
+  #fundshover_menu {
+    background: linear-gradient(1turn, #7f6426, #fbf59f 50.13%, #8a7132) !important;
+    border: 2px solid #ffd700 !important;
+    color: #000000 !important;
+    bottom: 88px !important;
+  }
+  #fundshover_menu li {
+    border-right: 2px solid rgba(0, 0, 0, 0.45) !important;
+  }
+  #fundshover_menu li:last-child {
+    border-right: none !important;
+  }
+  .last-trax-giga {
+  background: #7a7144 !important;
+  }
+  .last-trax-giga .last-trax-triangle,
+  .last-trax-giga .last-trax-triangle::before,
+  .last-trax-giga .last-trax-triangle::after {
+    background: #c5b56a !important;
+    background-color: #c5b56a !important;
+  }
+  .sub-games .scroll-wrapper .row.slider-content {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    color: #ffd700 !important;
+  }
+  .scroll-wrapper .left #left-button,
+  .scroll-wrapper .right #right-button,
+  .scroll-wrapper #left-button,
+  .scroll-wrapper #right-button {
+    background: linear-gradient(1turn, #7f6426, #fbf59f 50.13%, #8a7132) !important;
+  }
+  .game-title,
+  h5.game-title {
+    color: #ffffff !important;
+  }
+  .bal-box.swiper-slide {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+    color: #ffd700 !important;
+  }
+  #gamelinksModal-1 .md-body {
+    background: 
+      linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+  }
+  #gamelinksModal-1 .pola-title {
+    color: #ffd84d !important;
+  }
+  .swal2-popup {
+    background: 
+      linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+  }
+  .swal2-content {
+    color: #ffd84d !important;
+  }
+  .swal2-content .pola-title {
+    color: #ffd84d !important;
+  }
+  .swal2-content .pola-table {
+    border-color: #ffd84d !important;
+  }
+  .swal2-actions .swal2-confirm {
+    background: linear-gradient(180deg, #fff200, #ffb300) !important;
+    border: 1px solid #ffffff !important;
+    color: #000000 !important;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+  }
+  .swal2-actions .swal2-cancel {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #d4af37 !important;
+    color: #ffd700 !important;
+    font-weight: bold;
+  }
+  .swal2-success .swal2-success-ring {
+    border-color: #07c500 !important;
+  }
+  .swal2-success-line-tip,
+  .swal2-success-line-long {
+    background-color: #07c500 !important;
+  }
+  h2#swal2-title.swal2-title {
+   color: #ffd84d !important; 
+  }
+
   :root {
     --accent-color: #1130a5;
     --base-color: #ffd000;
