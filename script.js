@@ -1,3 +1,8 @@
+/*
+==========================
+  SERVER SELECTOR SYSTEM
+==========================
+*/
 (function () {
   "use strict";
 
