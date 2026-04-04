@@ -479,7 +479,7 @@ const ALLOWED_SERVERS = [
 
 .server-option-percent {
   flex: 0 0 auto;
-  margin-left: 18px;
+  margin-left: 22px;
   color: #ffd43a;
   font-size: 13px;
   font-weight: 900;
@@ -618,7 +618,21 @@ function getDynamicPercent(value) {
   dot.classList.add("active");
 
   if (customLabel) {
-    customLabel.textContent = label + ' (' + percent + ')';
+    var num = parseFloat(percent);
+
+var level = 1;
+if (num > 90) level = 4;
+else if (num > 75) level = 3;
+else if (num > 60) level = 2;
+
+var barsHtml = '';
+for (var i = 1; i <= 4; i++) {
+  barsHtml += '<span class="signal-bar' + (i <= level ? ' active' : '') + '"></span>';
+}
+
+var signal = '<span class="server-signal">' + barsHtml + '</span>';
+
+customLabel.innerHTML = label + ' (' + signal + ' ' + percent + ')';
   }
 
   statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
@@ -714,7 +728,21 @@ function getDynamicPercent(value) {
   var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
 
   if (customLabel) {
-    customLabel.textContent = savedLabel + ' (' + percent + ')';
+    cvar num = parseFloat(percent);
+
+var level = 1;
+if (num > 90) level = 4;
+else if (num > 75) level = 3;
+else if (num > 60) level = 2;
+
+var barsHtml = '';
+for (var i = 1; i <= 4; i++) {
+  barsHtml += '<span class="signal-bar' + (i <= level ? ' active' : '') + '"></span>';
+}
+
+var signal = '<span class="server-signal">' + barsHtml + '</span>';
+
+customLabel.innerHTML = savedLabel + ' (' + signal + ' ' + percent + ')';
   }
 
   statusText.innerHTML = 'Terhubung ke <strong>' + savedLabel + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
