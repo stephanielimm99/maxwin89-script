@@ -187,13 +187,13 @@ const ALLOWED_SERVERS = [
       .server-custom-trigger {
         width: 100%;
         min-height: 58px;
-        padding: 0 52px 0 16px;
+        padding: 0 36px 0 12px;
         border-radius: 14px;
         border: 1px solid rgba(255, 214, 51, 0.48);
         cursor: pointer;
         transition: .28s ease;
         color: #ffe082;
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 900;
         letter-spacing: .9px;
         text-transform: uppercase;
@@ -241,21 +241,14 @@ const ALLOWED_SERVERS = [
   padding-right: 8px;
 }
 
-.selected-server-name {
-  flex: 1;
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .selected-server-meta {
   flex: 0 0 auto;
   display: inline-flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 4px;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1;
 }
 
       .server-selector-arrow {
@@ -511,14 +504,16 @@ const ALLOWED_SERVERS = [
 
 .server-signal {
   display: inline-flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 2px;
-  margin-right: 6px;
-  height: 14px;
+  margin-right: 4px;
+  height: 12px;
+  position: relative;
+  top: 0;
 }
 
 .server-signal .signal-bar {
-  width: 3px;
+  width: 2px;
   background: currentColor;
   border-radius: 1px;
   opacity: 0.25;
@@ -526,10 +521,10 @@ const ALLOWED_SERVERS = [
 }
 
 /* tinggi lebih proporsional */
-.server-signal .signal-bar:nth-child(1) { height: 5px; }
-.server-signal .signal-bar:nth-child(2) { height: 8px; }
-.server-signal .signal-bar:nth-child(3) { height: 11px; }
-.server-signal .signal-bar:nth-child(4) { height: 14px; }
+.server-signal .signal-bar:nth-child(1) { height: 4px; }
+.server-signal .signal-bar:nth-child(2) { height: 6px; }
+.server-signal .signal-bar:nth-child(3) { height: 8px; }
+.server-signal .signal-bar:nth-child(4) { height: 10px; }
 
 .server-signal .signal-bar.active {
   opacity: 1;
