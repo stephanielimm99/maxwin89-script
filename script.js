@@ -986,3 +986,4 @@ function startRandomUpdates() {
     })(percentEls[i]);
   }
 }
+})();
