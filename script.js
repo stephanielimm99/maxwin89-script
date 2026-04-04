@@ -328,14 +328,12 @@ const ALLOWED_SERVERS = [
       }
 
       .server-custom-option.selected {
-        color: #181200;
-        background:
-          background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
-        border-color: #d4af37 !important;
+        color: #f5d76e;
+        background: linear-gradient(180deg, #2a2a2a, #141414);
+        border: 1px solid rgba(255, 214, 51, 0.4);
         box-shadow:
-          0 1px 0 rgba(255,255,255,.28) inset,
-          0 -6px 10px rgba(90, 55, 0, .18) inset,
-          0 0 12px rgba(255, 214, 51, 0.18);
+          0 0 8px rgba(255, 214, 51, 0.2),
+          inset 0 1px 0 rgba(255,255,255,0.05);
       }
 
       .server-terminal-inline {
@@ -479,23 +477,44 @@ const ALLOWED_SERVERS = [
         min-width: 0;
       }
 
-      .server-option-percent {
-        flex: 0 0 auto;
-        color: #ffd43a;
-        font-size: 13px;
-        font-weight: 900;
-        letter-spacing: .4px;
-      }
+.server-option-percent {
+  flex: 0 0 auto;
+  margin-left: 18px;
+  color: #ffd43a;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
 
       .server-custom-option.selected .server-option-percent {
-        color: #181200;
+        color: inherit;
       }
 
-      .server-signal {
-        font-size: 12px;
-        margin-right: 4px;
-        letter-spacing: 1px;
-      }
+.server-signal {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  margin-right: 6px;
+  height: 14px;
+}
+
+.server-signal .signal-bar {
+  width: 3px;
+  background: currentColor;
+  border-radius: 1px;
+  opacity: 0.25;
+  transition: 0.2s;
+}
+
+/* tinggi lebih proporsional */
+.server-signal .signal-bar:nth-child(1) { height: 5px; }
+.server-signal .signal-bar:nth-child(2) { height: 8px; }
+.server-signal .signal-bar:nth-child(3) { height: 11px; }
+.server-signal .signal-bar:nth-child(4) { height: 14px; }
+
+.server-signal .signal-bar.active {
+  opacity: 1;
+}
     `;
     document.head.appendChild(style);
   }
@@ -983,15 +1002,20 @@ function startRandomUpdates() {
         var percent = getDynamicPercent(value);
         var num = parseFloat(percent);
 
-      // BAR DINAMIS
-      var bars = "▂";
 
-      if (num > 90) bars = "▂▄▆█";
-      else if (num > 75) bars = "▂▄▆";
-      else bars = "▂▄";
+      var level = 1;
 
-      var signal = '<span class="server-signal">' + bars + '</span>';
-      el.innerHTML = signal + ' ' + percent;
+        if (num > 90) level = 4;
+        else if (num > 75) level = 3;
+        else if (num > 60) level = 2;
+
+      var barsHtml = '';
+        for (var i = 1; i <= 4; i++) {
+        barsHtml += '<span class="signal-bar' + (i <= level ? ' active' : '') + '"></span>';
+      }
+
+      var signal = '<span class="server-signal">' + barsHtml + '</span>';
+        el.innerHTML = signal + ' ' + percent;
 
         if (num > 90) {
           el.style.color = "#00ff88";
