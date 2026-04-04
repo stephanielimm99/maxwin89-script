@@ -550,15 +550,23 @@ function getTimeBucket() {
   return Math.floor(Date.now() / (1000 * 60 * 10));
 }
 
+var lastValues = {};
+
 function getDynamicPercent(value) {
   var server = getServerData(value);
   if (!server) return "0.00%";
 
-  var seed = hashString(value + "-" + getTimeBucket());
-  var rand = seededRandom(seed);
-  var percent = server.min + (rand * (server.max - server.min));
+  if (typeof lastValues[value] === "undefined") {
+    lastValues[value] = server.min + Math.random() * (server.max - server.min);
+  }
 
-  return percent.toFixed(2) + "%";
+  var change = (Math.random() - 0.5) * 0.8;
+  lastValues[value] += change;
+
+  if (lastValues[value] > server.max) lastValues[value] = server.max;
+  if (lastValues[value] < server.min) lastValues[value] = server.min;
+
+  return lastValues[value].toFixed(2) + "%";
 }
 
   function setPendingState(label) {
@@ -573,14 +581,16 @@ function getDynamicPercent(value) {
   }
 
   function setConnectedState(label) {
-    var dot = document.getElementById("serverDot");
-    var statusText = document.getElementById("serverStatusText");
+  var dot = document.getElementById("serverDot");
+  var statusText = document.getElementById("serverStatusText");
+  var savedValue = getSavedServer();
+  var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
 
-    if (!dot || !statusText) return;
+  if (!dot || !statusText) return;
 
-    dot.classList.remove("pending");
-    dot.classList.add("active");
-    statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
+  dot.classList.remove("pending");
+  dot.classList.add("active");
+  statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong> <strong>(' + percent + ')</strong>. Selamat bermain di ' + BRAND_NAME + '!';
   }
 
   function setDisconnectedState() {
@@ -658,6 +668,19 @@ function getDynamicPercent(value) {
     var value = percentEls[i].getAttribute("data-percent-for");
     percentEls[i].textContent = getDynamicPercent(value);
   }
+  }
+
+  function refreshConnectedStatusPercent() {
+  var savedValue = getSavedServer();
+  var savedLabel = getServerLabel(savedValue);
+  var statusText = document.getElementById("serverStatusText");
+  var dot = document.getElementById("serverDot");
+
+  if (!savedValue || !savedLabel || !statusText || !dot) return;
+  if (!dot.classList.contains("active")) return;
+
+  var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
+  statusText.innerHTML = 'Terhubung ke <strong>' + savedLabel + '</strong> <strong>(' + percent + ')</strong>. Selamat bermain di ' + BRAND_NAME + '!';
   }
 
   function showTerminalSequence(lines, onComplete, token) {
@@ -835,7 +858,7 @@ function getDynamicPercent(value) {
         <span class="server-dot ${connected ? "active" : ""}" id="serverDot"></span>
         <div class="server-status-text" id="serverStatusText">
           ${connected
-            ? 'Terhubung ke <strong>' + savedLabel + '</strong>. Selamat bermain di ' + BRAND_NAME + '!'
+            ? 'Terhubung ke <strong>' + savedLabel + '</strong> <strong>(' + getDynamicPercent(savedValue) + ')</strong>. Selamat bermain di ' + BRAND_NAME + '!'
             : 'Status: Belum terhubung ke server'}
         </div>
       </div>
@@ -913,6 +936,7 @@ function getDynamicPercent(value) {
         if (ui && !ui.parentNode) {
           target.insertAdjacentElement(INSERT_POSITION, ui);
           updateUIState();
+          startRandomUpdates();
         }
         clearInterval(interval);
       } else if (attempts >= 20) {
@@ -923,9 +947,42 @@ function getDynamicPercent(value) {
     window.addEventListener("storage", updateUIState);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
+function startRandomUpdates() {
+  var percentEls = document.querySelectorAll("[data-percent-for]");
+
+  for (var i = 0; i < percentEls.length; i++) {
+    (function(el) {
+
+      function updateOne() {
+        var value = el.getAttribute("data-percent-for");
+        var percent = getDynamicPercent(value);
+        el.textContent = percent;
+
+        var num = parseFloat(percent);
+
+        if (num > 90) {
+          el.style.color = "#00ff88";
+        } else if (num > 75) {
+          el.style.color = "#ffd43a";
+        } else {
+          el.style.color = "#ff4d4d";
+        }
+
+        if (value === getSavedServer()) {
+          refreshConnectedStatusPercent();
+        }
+
+        var delay = Math.random() * 3000 + 1000;
+        setTimeout(updateOne, delay);
+      }
+
+      updateOne();
+
+    })(percentEls[i]);
   }
-})();
+}
