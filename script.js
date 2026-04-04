@@ -305,7 +305,7 @@ const ALLOWED_SERVERS = [
         border-radius: 12px;
         display: flex;
         align-items: center;
-        color: #f4e6a7;
+        color: #d4af37;
         font-size: 13px;
         font-weight: 800;
         letter-spacing: .8px;
@@ -330,8 +330,8 @@ const ALLOWED_SERVERS = [
       .server-custom-option.selected {
         color: #181200;
         background:
-          linear-gradient(180deg, #ffe88a 0%, #ffd43a 35%, #d59e00 100%);
-        border-color: rgba(255, 244, 188, 0.42);
+          background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+        border-color: #d4af37 !important;
         box-shadow:
           0 1px 0 rgba(255,255,255,.28) inset,
           0 -6px 10px rgba(90, 55, 0, .18) inset,
@@ -490,6 +490,12 @@ const ALLOWED_SERVERS = [
       .server-custom-option.selected .server-option-percent {
         color: #181200;
       }
+
+      .server-signal {
+        font-size: 12px;
+        margin-right: 4px;
+        letter-spacing: 1px;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -584,13 +590,19 @@ function getDynamicPercent(value) {
   var dot = document.getElementById("serverDot");
   var statusText = document.getElementById("serverStatusText");
   var savedValue = getSavedServer();
+  var customLabel = document.getElementById("serverCustomLabel");
   var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
 
   if (!dot || !statusText) return;
 
   dot.classList.remove("pending");
   dot.classList.add("active");
-  statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong> <strong>(' + percent + ')</strong>. Selamat bermain di ' + BRAND_NAME + '!';
+
+  if (customLabel) {
+    customLabel.textContent = label + ' (' + percent + ')';
+  }
+
+  statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
   }
 
   function setDisconnectedState() {
@@ -675,12 +687,18 @@ function getDynamicPercent(value) {
   var savedLabel = getServerLabel(savedValue);
   var statusText = document.getElementById("serverStatusText");
   var dot = document.getElementById("serverDot");
+  var customLabel = document.getElementById("serverCustomLabel");
 
   if (!savedValue || !savedLabel || !statusText || !dot) return;
   if (!dot.classList.contains("active")) return;
 
   var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
-  statusText.innerHTML = 'Terhubung ke <strong>' + savedLabel + '</strong> <strong>(' + percent + ')</strong>. Selamat bermain di ' + BRAND_NAME + '!';
+
+  if (customLabel) {
+    customLabel.textContent = savedLabel + ' (' + percent + ')';
+  }
+
+  statusText.innerHTML = 'Terhubung ke <strong>' + savedLabel + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
   }
 
   function showTerminalSequence(lines, onComplete, token) {
@@ -834,7 +852,7 @@ function getDynamicPercent(value) {
 
         <div class="server-custom-select" id="serverCustomSelect">
           <div class="server-custom-trigger" id="serverCustomTrigger" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
-            <span class="server-custom-label" id="serverCustomLabel">${savedLabel || "Pilih Server"}</span>
+            <span class="server-custom-label" id="serverCustomLabel">${savedLabel ? savedLabel + ' (' + getDynamicPercent(savedValue) + ')' : "Pilih Server"}</span>
             <span class="server-selector-arrow"></span>
           </div>
 
@@ -843,7 +861,9 @@ function getDynamicPercent(value) {
             ${ALLOWED_SERVERS.map(function (item) {
               return '<div class="server-custom-option ' + (item.value === savedValue ? "selected" : "") + '" data-value="' + item.value + '">' +
                 '<span class="server-option-name">' + item.label + '</span>' +
-                '<span class="server-option-percent" data-percent-for="' + item.value + '">' + getDynamicPercent(item.value) + '</span>' +
+                '<span class="server-option-percent" data-percent-for="' + item.value + '">' +
+                '<span class="server-signal">▂▄▆</span> ' + getDynamicPercent(item.value) +
+                '</span>' +
                 '</div>';
             }).join("")}
           </div>
@@ -858,7 +878,7 @@ function getDynamicPercent(value) {
         <span class="server-dot ${connected ? "active" : ""}" id="serverDot"></span>
         <div class="server-status-text" id="serverStatusText">
           ${connected
-            ? 'Terhubung ke <strong>' + savedLabel + '</strong> <strong>(' + getDynamicPercent(savedValue) + ')</strong>. Selamat bermain di ' + BRAND_NAME + '!'
+            ? 'Terhubung ke <strong>' + savedLabel + '</strong>. Selamat bermain di ' + BRAND_NAME + '!'
             : 'Status: Belum terhubung ke server'}
         </div>
       </div>
@@ -961,9 +981,17 @@ function startRandomUpdates() {
       function updateOne() {
         var value = el.getAttribute("data-percent-for");
         var percent = getDynamicPercent(value);
-        el.textContent = percent;
-
         var num = parseFloat(percent);
+
+      // BAR DINAMIS
+      var bars = "▂";
+
+      if (num > 90) bars = "▂▄▆█";
+      else if (num > 75) bars = "▂▄▆";
+      else bars = "▂▄";
+
+      var signal = '<span class="server-signal">' + bars + '</span>';
+      el.innerHTML = signal + ' ' + percent;
 
         if (num > 90) {
           el.style.color = "#00ff88";
