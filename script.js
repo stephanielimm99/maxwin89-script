@@ -231,13 +231,32 @@ const ALLOWED_SERVERS = [
           0 0 18px rgba(255, 214, 51, 0.16);
       }
 
-      .server-custom-label {
-        display: block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: 10px;
-      }
+.server-custom-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  padding-right: 8px;
+}
+
+.selected-server-name {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selected-server-meta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+}
 
       .server-selector-arrow {
         position: absolute;
@@ -479,7 +498,7 @@ const ALLOWED_SERVERS = [
 
 .server-option-percent {
   flex: 0 0 auto;
-  margin-left: 22px;
+  margin-left: 16px;
   color: #ffd43a;
   font-size: 13px;
   font-weight: 900;
@@ -632,7 +651,9 @@ for (var i = 1; i <= 4; i++) {
 
 var signal = '<span class="server-signal">' + barsHtml + '</span>';
 
-customLabel.innerHTML = label + ' (' + signal + ' ' + percent + ')';
+customLabel.innerHTML =
+  '<span class="selected-server-name">' + label + '</span>' +
+  '<span class="selected-server-meta">' + signal + ' ' + percent + '</span>';
   }
 
   statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
@@ -742,7 +763,9 @@ for (var i = 1; i <= 4; i++) {
 
 var signal = '<span class="server-signal">' + barsHtml + '</span>';
 
-customLabel.innerHTML = savedLabel + ' (' + signal + ' ' + percent + ')';
+customLabel.innerHTML =
+  '<span class="selected-server-name">' + savedLabel + '</span>' +
+  '<span class="selected-server-meta">' + signal + ' ' + percent + '</span>';
   }
 
   statusText.innerHTML = 'Terhubung ke <strong>' + savedLabel + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
@@ -899,7 +922,11 @@ customLabel.innerHTML = savedLabel + ' (' + signal + ' ' + percent + ')';
 
         <div class="server-custom-select" id="serverCustomSelect">
           <div class="server-custom-trigger" id="serverCustomTrigger" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
-            <span class="server-custom-label" id="serverCustomLabel">${savedLabel ? savedLabel + ' (' + getDynamicPercent(savedValue) + ')' : "Pilih Server"}</span>
+            <span class="server-custom-label" id="serverCustomLabel">${
+  savedLabel
+    ? '<span class="selected-server-name">' + savedLabel + '</span><span class="selected-server-meta">' + getDynamicPercent(savedValue) + '</span>'
+    : "Pilih Server"
+}</span>
             <span class="server-selector-arrow"></span>
           </div>
 
