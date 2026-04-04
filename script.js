@@ -728,7 +728,7 @@ customLabel.innerHTML = label + ' (' + signal + ' ' + percent + ')';
   var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
 
   if (customLabel) {
-    cvar num = parseFloat(percent);
+    var num = parseFloat(percent);
 
 var level = 1;
 if (num > 90) level = 4;
@@ -909,7 +909,7 @@ customLabel.innerHTML = savedLabel + ' (' + signal + ' ' + percent + ')';
               return '<div class="server-custom-option ' + (item.value === savedValue ? "selected" : "") + '" data-value="' + item.value + '">' +
                 '<span class="server-option-name">' + item.label + '</span>' +
                 '<span class="server-option-percent" data-percent-for="' + item.value + '">' +
-                '<span class="server-signal">▂▄▆</span> ' + getDynamicPercent(item.value) +
+                  getDynamicPercent(item.value) +
                 '</span>' +
                 '</div>';
             }).join("")}
