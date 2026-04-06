@@ -504,7 +504,7 @@ const ALLOWED_SERVERS = [
 
 .server-signal {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 2px;
   margin-right: 4px;
   height: 12px;
@@ -513,7 +513,7 @@ const ALLOWED_SERVERS = [
 }
 
 .server-signal .signal-bar {
-  width: 2px;
+  width: 3px;
   background: currentColor;
   border-radius: 1px;
   opacity: 0.25;
@@ -521,7 +521,7 @@ const ALLOWED_SERVERS = [
 }
 
 /* tinggi lebih proporsional */
-.server-signal .signal-bar:nth-child(1) { height: 4px; }
+.server-signal .signal-bar:nth-child(1) { height: 4x; }
 .server-signal .signal-bar:nth-child(2) { height: 6px; }
 .server-signal .signal-bar:nth-child(3) { height: 8px; }
 .server-signal .signal-bar:nth-child(4) { height: 10px; }
