@@ -592,6 +592,14 @@ function getTimeBucket() {
 var lastValues = {};
 var currentPercents = {};
 
+try {
+  lastValues = JSON.parse(localStorage.getItem("serverPercentValues") || "{}");
+  currentPercents = JSON.parse(localStorage.getItem("serverCurrentPercents") || "{}");
+} catch (e) {
+  lastValues = {};
+  currentPercents = {};
+}
+
 function getDynamicPercent(value) {
   var server = getServerData(value);
   if (!server) return "0.00%";
@@ -608,6 +616,12 @@ function getDynamicPercent(value) {
 
   var result = lastValues[value].toFixed(2) + "%";
   currentPercents[value] = result;
+
+  try {
+    localStorage.setItem("serverPercentValues", JSON.stringify(lastValues));
+    localStorage.setItem("serverCurrentPercents", JSON.stringify(currentPercents));
+  } catch (e) {}
+
   return result;
 }
 
