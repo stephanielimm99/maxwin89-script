@@ -592,35 +592,38 @@ function getTimeBucket() {
 var lastValues = {};
 var currentPercents = {};
 
-try {
-  lastValues = JSON.parse(localStorage.getItem("serverPercentValues") || "{}");
-  currentPercents = JSON.parse(localStorage.getItem("serverCurrentPercents") || "{}");
-} catch (e) {
-  lastValues = {};
-  currentPercents = {};
-}
-
 function getDynamicPercent(value) {
   var server = getServerData(value);
   if (!server) return "0.00%";
 
-  if (typeof lastValues[value] === "undefined") {
-    lastValues[value] = server.min + Math.random() * (server.max - server.min);
+  var bucketMs = 5 * 60 * 1000; // 5 menit
+  var now = Date.now();
+
+  var currentBucket = Math.floor(now / bucketMs);
+  var nextBucket = currentBucket + 1;
+
+  function getBucketValue(bucket) {
+    var seed = hashString(value + "|" + bucket + "|" + BRAND_NAME);
+    var rand = seededRandom(seed);
+    return server.min + rand * (server.max - server.min);
   }
 
-  var change = (Math.random() - 0.5) * 0.8;
-  lastValues[value] += change;
+  var startValue = getBucketValue(currentBucket);
+  var endValue = getBucketValue(nextBucket);
 
-  if (lastValues[value] > server.max) lastValues[value] = server.max;
-  if (lastValues[value] < server.min) lastValues[value] = server.min;
+  var progress = (now % bucketMs) / bucketMs;
 
-  var result = lastValues[value].toFixed(2) + "%";
+  // easing biar gerak lebih natural
+  var eased = progress * progress * (3 - 2 * progress);
+
+  var liveValue = startValue + (endValue - startValue) * eased;
+
+  if (liveValue > server.max) liveValue = server.max;
+  if (liveValue < server.min) liveValue = server.min;
+
+  lastValues[value] = liveValue;
+  var result = liveValue.toFixed(2) + "%";
   currentPercents[value] = result;
-
-  try {
-    localStorage.setItem("serverPercentValues", JSON.stringify(lastValues));
-    localStorage.setItem("serverCurrentPercents", JSON.stringify(currentPercents));
-  } catch (e) {}
 
   return result;
 }
