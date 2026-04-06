@@ -521,7 +521,7 @@ const ALLOWED_SERVERS = [
 }
 
 /* tinggi lebih proporsional */
-.server-signal .signal-bar:nth-child(1) { height: 4x; }
+.server-signal .signal-bar:nth-child(1) { height: 4px; }
 .server-signal .signal-bar:nth-child(2) { height: 6px; }
 .server-signal .signal-bar:nth-child(3) { height: 8px; }
 .server-signal .signal-bar:nth-child(4) { height: 10px; }
@@ -590,6 +590,7 @@ function getTimeBucket() {
 }
 
 var lastValues = {};
+var currentPercents = {};
 
 function getDynamicPercent(value) {
   var server = getServerData(value);
@@ -605,7 +606,9 @@ function getDynamicPercent(value) {
   if (lastValues[value] > server.max) lastValues[value] = server.max;
   if (lastValues[value] < server.min) lastValues[value] = server.min;
 
-  return lastValues[value].toFixed(2) + "%";
+  var result = lastValues[value].toFixed(2) + "%";
+  currentPercents[value] = result;
+  return result;
 }
 
   function setPendingState(label) {
@@ -624,7 +627,7 @@ function getDynamicPercent(value) {
   var statusText = document.getElementById("serverStatusText");
   var savedValue = getSavedServer();
   var customLabel = document.getElementById("serverCustomLabel");
-  var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
+  var percent = currentPercents[savedValue] || getDynamicPercent(savedValue);
 
   if (!dot || !statusText) return;
 
@@ -646,14 +649,17 @@ for (var i = 1; i <= 4; i++) {
 
 var signal = '<span class="server-signal">' + barsHtml + '</span>';
 
+var metaColor = "#ff4d4d";
+if (num > 90) metaColor = "#00ff88";
+else if (num > 75) metaColor = "#ffd43a";
+
 customLabel.innerHTML =
   '<span class="selected-server-name">' + label + '</span>' +
-  '<span class="selected-server-meta">' + signal + ' ' + percent + '</span>';
-  }
+  '<span class="selected-server-meta" style="color:' + metaColor + ';">' + signal + ' ' + percent + '</span>';
 
   statusText.innerHTML = 'Terhubung ke <strong>' + label + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
   }
-
+  }
   function setDisconnectedState() {
     var dot = document.getElementById("serverDot");
     var statusText = document.getElementById("serverStatusText");
@@ -704,7 +710,9 @@ customLabel.innerHTML =
     }
 
     if (customLabel) {
-      customLabel.textContent = savedLabel || "Pilih Server";
+      if (!savedValue) {
+        customLabel.textContent = "Pilih Server";
+      } 
     }
 
     syncSelectedOption(savedValue || "");
@@ -741,7 +749,7 @@ customLabel.innerHTML =
   if (!savedValue || !savedLabel || !statusText || !dot) return;
   if (!dot.classList.contains("active")) return;
 
-  var percent = document.querySelector('[data-percent-for="' + savedValue + '"]')?.textContent || getDynamicPercent(savedValue);
+  var percent = currentPercents[savedValue] || getDynamicPercent(savedValue);
 
   if (customLabel) {
     var num = parseFloat(percent);
@@ -758,14 +766,17 @@ for (var i = 1; i <= 4; i++) {
 
 var signal = '<span class="server-signal">' + barsHtml + '</span>';
 
+var metaColor = "#ff4d4d";
+if (num > 90) metaColor = "#00ff88";
+else if (num > 75) metaColor = "#ffd43a";
+
 customLabel.innerHTML =
   '<span class="selected-server-name">' + savedLabel + '</span>' +
-  '<span class="selected-server-meta">' + signal + ' ' + percent + '</span>';
-  }
+  '<span class="selected-server-meta" style="color:' + metaColor + ';">' + signal + ' ' + percent + '</span>';
 
   statusText.innerHTML = 'Terhubung ke <strong>' + savedLabel + '</strong>. Selamat bermain di ' + BRAND_NAME + '!';
   }
-
+  }
   function showTerminalSequence(lines, onComplete, token) {
     var terminalWrap = document.getElementById("serverTerminalInline");
     var terminalBox = document.getElementById("serverTerminalInlineBox");
@@ -831,7 +842,7 @@ customLabel.innerHTML =
     }
 
     if (customLabel) {
-      customLabel.textContent = label || "Pilih Server";
+      customLabel.innerHTML = '<span class="selected-server-name">' + (label || "Pilih Server") + '</span>';
     }
 
     syncSelectedOption(value);
@@ -850,7 +861,7 @@ customLabel.innerHTML =
   }
 
   if (customLabel) {
-    customLabel.textContent = label || "Pilih Server";
+    customLabel.innerHTML = '<span class="selected-server-name">' + (label || "Pilih Server") + '</span>';
   }
 
   syncSelectedOption(value);
@@ -919,7 +930,29 @@ customLabel.innerHTML =
           <div class="server-custom-trigger" id="serverCustomTrigger" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
             <span class="server-custom-label" id="serverCustomLabel">${
   savedLabel
-    ? '<span class="selected-server-name">' + savedLabel + '</span><span class="selected-server-meta">' + getDynamicPercent(savedValue) + '</span>'
+    ? (function() {
+  var percent = currentPercents[savedValue] || getDynamicPercent(savedValue);
+  var num = parseFloat(percent);
+
+  var level = 1;
+  if (num > 90) level = 4;
+  else if (num > 75) level = 3;
+  else if (num > 60) level = 2;
+
+  var barsHtml = '';
+  for (var i = 1; i <= 4; i++) {
+    barsHtml += '<span class="signal-bar' + (i <= level ? ' active' : '') + '"></span>';
+  }
+
+  var signal = '<span class="server-signal">' + barsHtml + '</span>';
+
+  var metaColor = "#ff4d4d";
+  if (num > 90) metaColor = "#00ff88";
+  else if (num > 75) metaColor = "#ffd43a";
+
+  return '<span class="selected-server-name">' + savedLabel + '</span>' +
+         '<span class="selected-server-meta" style="color:' + metaColor + ';">' + signal + ' ' + percent + '</span>';
+})()
     : "Pilih Server"
 }</span>
             <span class="server-selector-arrow"></span>
