@@ -8,20 +8,20 @@
 
   const BRAND_NAME = "MAXWIN89";
 const ALLOWED_SERVERS = [
-  { value: "indonesia", label: "Server Indonesia", min: 60.20, max: 99.80 },
-  { value: "singapura", label: "Server Singapura", min: 62.90, max: 99.85 },
+  { value: "indonesia", label: "Server Indonesia", min: 40.20, max: 99.80 },
+  { value: "singapura", label: "Server Singapura", min: 42.90, max: 99.85 },
   { value: "singapore_vip", label: "Server Singapura VIP", min: 85.30, max: 99.95 },
-  { value: "malaysia", label: "Server Malaysia", min: 61.80, max: 99.70 },
-  { value: "thailand", label: "Server Thailand", min: 60.00, max: 99.85 },
-  { value: "filipina", label: "Server Filipina", min: 60.70, max: 99.60 },
-  { value: "kamboja", label: "Server Kamboja", min: 60.90, max: 99.50 },
-  { value: "vietnam", label: "Server Vietnam", min: 61.10, max: 99.45 },
-  { value: "china", label: "Server China", min: 60.85, max: 99.65 },
-  { value: "hongkong", label: "Server Hongkong", min: 61.20, max: 99.88 },
-  { value: "macau", label: "Server Macau", min: 61.75, max: 99.78 },
+  { value: "malaysia", label: "Server Malaysia", min: 41.80, max: 99.70 },
+  { value: "thailand", label: "Server Thailand", min: 40.00, max: 99.85 },
+  { value: "filipina", label: "Server Filipina", min: 40.70, max: 99.60 },
+  { value: "kamboja", label: "Server Kamboja", min: 40.90, max: 99.50 },
+  { value: "vietnam", label: "Server Vietnam", min: 41.10, max: 99.45 },
+  { value: "china", label: "Server China", min: 40.85, max: 99.65 },
+  { value: "hongkong", label: "Server Hongkong", min: 41.20, max: 99.88 },
+  { value: "macau", label: "Server Macau", min: 41.75, max: 99.78 },
   { value: "macau_vip", label: "Server Macau VIP", min: 85.45, max: 99.98 },
-  { value: "jepang", label: "Server Jepang", min: 62.70, max: 99.95 },
-  { value: "korea", label: "Server Korea", min: 63.50, max: 99.78 }
+  { value: "jepang", label: "Server Jepang", min: 42.70, max: 99.95 },
+  { value: "korea", label: "Server Korea", min: 43.50, max: 99.78 }
 ];
 
   const TARGET_SELECTORS = [
