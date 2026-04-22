@@ -624,7 +624,7 @@ body {
   margin-top: 10px;
 }
 #apk-box-ui {
-  width: calc(100% - 12px);
+  width: calc(100% - 20px);
   max-width: none;
   margin: 10px auto 16px;
 }
