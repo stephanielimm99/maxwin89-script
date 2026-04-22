@@ -1182,7 +1182,7 @@ function createApkBox() {
         <button class="copy-btn" type="button" id="copyAltLinkBtn">Salin Link</button>
 
         <div class="note">
-          * Klik tombol untuk menyalin link yang dipilih
+          * Klik tombol untuk menyalin link
         </div>
 
         <div class="search-wrap">
