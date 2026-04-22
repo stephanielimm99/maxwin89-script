@@ -716,7 +716,7 @@ select {
   border: none;
   background-color: #ffffff;
   font-size: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
@@ -779,7 +779,7 @@ select {
   100% { left: 130%; }
 }
 .search-note {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
   color: #fff;
   text-align: center;
