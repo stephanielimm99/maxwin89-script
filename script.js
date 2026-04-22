@@ -1167,9 +1167,9 @@ function createApkBox() {
           <span class="line-2">Link Resmi Kami</span>
         </div>
 
-        <a class="main-link" href="https://altwin.link/maxwin89" target="_blank">
+        <button class="main-link" type="button" id="copyMainLinkBtn">
           altwin.link/maxwin89
-        </a>
+        </button>
 
         <div class="label">Pilih Link Alternatif:</div>
 
@@ -1202,6 +1202,7 @@ function createApkBox() {
   `;
 
   const copyBtn = wrap.querySelector("#copyAltLinkBtn");
+  const copyMainLinkBtn = wrap.querySelector("#copyMainLinkBtn");
   const select = wrap.querySelector("#altLink");
 
   if (copyBtn && select) {
@@ -1218,5 +1219,18 @@ function createApkBox() {
     });
   }
 
+  if (copyMainLinkBtn) {
+    copyMainLinkBtn.addEventListener("click", function () {
+      const value = "https://altwin.link/maxwin89";
+
+      navigator.clipboard.writeText(value)
+        .then(() => {
+          alert("Link berhasil disalin: " + value);
+        })
+        .catch(() => {
+          alert("Gagal menyalin link.");
+        });
+    });
+  }
   return wrap;
 }
