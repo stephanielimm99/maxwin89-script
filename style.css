@@ -624,16 +624,17 @@ body {
   margin-top: 10px;
 }
 #apk-box-ui {
-  width: calc(100% - 20px);
+  width: 100%;
   max-width: 100%;
-  margin: 10px auto 16px;
+  margin: 10px 0 16px;
   box-sizing: border-box;
 }
 
 #apk-box-ui .maxwin-box {
-  width: 100%;
-  max-width: none;
-  margin: 0;
+  width: calc(100% - 20px);
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 /* KIRI */
 .left-panel {
