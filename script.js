@@ -25,15 +25,9 @@ const ALLOWED_SERVERS = [
 ];
 
 const TARGET_SELECTORS = [
-  ".scroll-wrapper",
-  ".btns-log",
-  ".ann-wrapper",
   ".jackpot",
   ".progressive-jackpot-text-wrapper",
-  ".progressive-jackpot-text",
-  ".main-menu-outer-container",
-  ".login-form",
-  ".navbar-brand"
+  ".progressive-jackpot-text"
 ];
 
   const STORAGE_KEY = "selectedServerEvent";
@@ -1061,6 +1055,7 @@ customLabel.innerHTML =
 
   function init() {
     if (window.innerWidth > MOBILE_BREAKPOINT) return;
+    if (!document.querySelector(".jackpot")) return;
 
     let attempts = 0;
     const interval = setInterval(() => {
