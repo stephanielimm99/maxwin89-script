@@ -1072,18 +1072,23 @@ customLabel.innerHTML =
         if (target) break;
       }
 
-      if (target) {
-        injectStyle();
-        const ui = createUI();
-        if (ui && !ui.parentNode) {
-          target.insertAdjacentElement(INSERT_POSITION, ui);
-          updateUIState();
-          startRandomUpdates();
-        }
-        clearInterval(interval);
-      } else if (attempts >= 20) {
-        clearInterval(interval);
-      }
+if (target) {
+  injectStyle();
+
+  const apkBox = createApkBox();
+  if (apkBox && !apkBox.parentNode) {
+    target.insertAdjacentElement("beforebegin", apkBox);
+  }
+
+  const ui = createUI();
+  if (ui && !ui.parentNode) {
+    target.insertAdjacentElement(INSERT_POSITION, ui);
+    updateUIState();
+    startRandomUpdates();
+  }
+
+  clearInterval(interval);
+}
     }, 500);
 
     window.addEventListener("storage", updateUIState);
@@ -1142,3 +1147,76 @@ function startRandomUpdates() {
   }
 }
 })();
+/*
+==========================
+  APK & LINK ALT
+==========================
+*/
+function createApkBox() {
+  const existing = document.getElementById("apk-box-ui");
+  if (existing) return existing;
+
+  const wrap = document.createElement("div");
+  wrap.id = "apk-box-ui";
+
+  wrap.innerHTML = `
+    <div class="maxwin-box">
+      <div class="left-panel">
+        <div class="headline">
+          <span class="line-1">Pastikan Selalu Login Dengan</span>
+          <span class="line-2">Link Resmi Kami</span>
+        </div>
+
+        <a class="main-link" href="https://altwin.link/maxwin89" target="_blank">
+          altwin.link/maxwin89
+        </a>
+
+        <div class="label">Pilih Link Alternatif:</div>
+
+        <select id="altLink">
+          <option value="#">#</option>
+          <option value="#">#</option>
+          <option value="#">#</option>
+        </select>
+
+        <button class="copy-btn" type="button" id="copyAltLinkBtn">Salin Link</button>
+
+        <div class="note">
+          * Klik tombol untuk menyalin link yang dipilih
+        </div>
+
+        <div class="search-wrap">
+          <div class="search-note">Cari situs kami di CARILINK.NET</div>
+          <a class="search-btn" href="https://carilink.net" target="_blank">
+            CARILINK.NET
+          </a>
+        </div>
+      </div>
+
+      <div class="right-panel">
+        <a href="https://storetn.in/MAXWIN89/maxwin89.apk" target="_blank">
+          <img src="https://files.sitestatic.net/CustomFiles/20260422162852000000503c67e581__MAXWIN89__520x700.png" alt="Download APK MAXWIN89">
+        </a>
+      </div>
+    </div>
+  `;
+
+  const copyBtn = wrap.querySelector("#copyAltLinkBtn");
+  const select = wrap.querySelector("#altLink");
+
+  if (copyBtn && select) {
+    copyBtn.addEventListener("click", function () {
+      const value = select.value;
+
+      navigator.clipboard.writeText(value)
+        .then(() => {
+          alert("Link berhasil disalin: " + value);
+        })
+        .catch(() => {
+          alert("Gagal menyalin link.");
+        });
+    });
+  }
+
+  return wrap;
+}
