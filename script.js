@@ -24,14 +24,17 @@ const ALLOWED_SERVERS = [
   { value: "korea", label: "Server Korea", min: 43.50, max: 99.78 }
 ];
 
-  const TARGET_SELECTORS = [
-    ".progressive-jackpot-text-wrapper",
-    ".progressive-jackpot-text",
-    ".jackpot",
-    ".main-menu-outer-container",
-    ".login-form",
-    ".navbar-brand"
-  ];
+const TARGET_SELECTORS = [
+  ".scroll-wrapper",
+  ".btns-log",
+  ".ann-wrapper",
+  ".jackpot",
+  ".progressive-jackpot-text-wrapper",
+  ".progressive-jackpot-text",
+  ".main-menu-outer-container",
+  ".login-form",
+  ".navbar-brand"
+];
 
   const STORAGE_KEY = "selectedServerEvent";
   const MOBILE_BREAKPOINT = 768;
