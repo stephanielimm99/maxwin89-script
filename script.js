@@ -40,7 +40,6 @@ const TARGET_SELECTORS = [
     style.textContent = `
       .server-selector-ui {
         width: calc(100% - 20px);
-        max-width: 100%;
         padding: 0 10px;
         max-width: 100%;
         margin: 14px auto 16px;
