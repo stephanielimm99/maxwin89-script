@@ -25,9 +25,7 @@ const ALLOWED_SERVERS = [
 ];
 
 const TARGET_SELECTORS = [
-  ".jackpot",
-  ".progressive-jackpot-text-wrapper",
-  ".progressive-jackpot-text"
+  ".jackpot"
 ];
 
   const STORAGE_KEY = "selectedServerEvent";
@@ -1076,14 +1074,13 @@ if (ui && !ui.parentNode) {
 
   const apkBox = createApkBox();
 
-  if (apkBox && !apkBox.parentNode) {
-    target.insertAdjacentElement(INSERT_POSITION, apkBox);
-  }
+if (apkBox && !apkBox.parentNode) {
+  target.insertAdjacentElement("afterend", apkBox);
+}
 
-  // 🔥 UI nempel ke APK, bukan ke target lagi
-  if (apkBox) {
-    apkBox.insertAdjacentElement("afterend", ui);
-  }
+if (ui && !ui.parentNode) {
+  apkBox.insertAdjacentElement("afterend", ui);
+}
 
   updateUIState();
   startRandomUpdates();
