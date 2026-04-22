@@ -30,7 +30,7 @@ const TARGET_SELECTORS = [
 
   const STORAGE_KEY = "selectedServerEvent";
   const MOBILE_BREAKPOINT = 768;
-  const INSERT_POSITION = "afterend";
+  const INSERT_POSITION = "beforebegin";
 
   function injectStyle() {
     if (document.getElementById("server-selector-style")) return;
@@ -1075,7 +1075,7 @@ if (ui && !ui.parentNode) {
   const apkBox = createApkBox();
 
 if (apkBox && !apkBox.parentNode) {
-  target.insertAdjacentElement("afterend", apkBox);
+  target.insertAdjacentElement("beforebegin", apkBox);
 }
 
 if (ui && !ui.parentNode) {
