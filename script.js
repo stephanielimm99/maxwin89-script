@@ -40,10 +40,10 @@ const TARGET_SELECTORS = [
     style.textContent = `
       .server-selector-ui {
         width: calc(100% - 20px);
-        padding: 0 10px;
         max-width: 100%;
         margin: 14px auto 16px;
         padding: 16px;
+        box-sizing: border-box;
         position: relative;
         overflow: visible;
         z-index: 99;
