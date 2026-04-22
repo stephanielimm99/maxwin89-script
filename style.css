@@ -717,9 +717,9 @@ select {
   border-radius: 6px;
   border: none;
   background-color: #ffffff;
-  font-size: 4px;
-  font-weight: 700;
-  color: #000000;
+  font-size: 4px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
   margin-bottom: 10px;
   outline: none;
   appearance: none;
