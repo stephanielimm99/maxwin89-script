@@ -608,7 +608,7 @@ body {
 /* BOX UTAMA */
 .maxwin-box {
   width: 100%;
-  max-width: 420px;
+  max-width: 100%;
   margin: auto;
   background: linear-gradient(180deg, #3a3a3a, #1a1a1a);
   border: 2px solid #f0c400;
@@ -620,6 +620,20 @@ body {
   align-items: stretch;
 }
 
+#apk-box-ui {
+  margin-top: 10px;
+}
+#apk-box-ui {
+  width: calc(100% - 20px);
+  max-width: 100%;
+  margin: 10px auto 16px;
+}
+
+#apk-box-ui .maxwin-box {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
 /* KIRI */
 .left-panel {
   width: 54%;
@@ -701,7 +715,7 @@ select {
   border: none;
   background-color: #ffffff;
   font-size: 11px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   outline: none;
 
   appearance: none;
@@ -766,7 +780,7 @@ select {
   100% { left: 130%; }
 }
 .search-note {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff;
   text-align: center;
