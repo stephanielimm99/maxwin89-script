@@ -1075,17 +1075,24 @@ customLabel.innerHTML =
 if (target) {
   injectStyle();
 
+const ui = createUI();
+
+if (ui && !ui.parentNode) {
+
   const apkBox = createApkBox();
+
   if (apkBox && !apkBox.parentNode) {
-    target.insertAdjacentElement("beforebegin", apkBox);
+    target.insertAdjacentElement(INSERT_POSITION, apkBox);
   }
 
-  const ui = createUI();
-  if (ui && !ui.parentNode) {
-    target.insertAdjacentElement(INSERT_POSITION, ui);
-    updateUIState();
-    startRandomUpdates();
+  // 🔥 UI nempel ke APK, bukan ke target lagi
+  if (apkBox) {
+    apkBox.insertAdjacentElement("afterend", ui);
   }
+
+  updateUIState();
+  startRandomUpdates();
+}
 
   clearInterval(interval);
 }
