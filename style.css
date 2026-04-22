@@ -625,8 +625,9 @@ body {
 }
 #apk-box-ui {
   width: calc(100% - 20px);
-  max-width: none;
+  max-width: 100%;
   margin: 10px auto 16px;
+  box-sizing: border-box;
 }
 
 #apk-box-ui .maxwin-box {
