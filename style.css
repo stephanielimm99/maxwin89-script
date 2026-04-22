@@ -716,7 +716,7 @@ select {
   border: none;
   background-color: #ffffff;
   font-size: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
@@ -737,6 +737,7 @@ select {
   border-radius: 6px;
   cursor: pointer;
   width: fit-content;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
