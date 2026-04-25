@@ -157,7 +157,7 @@
   }
   .container.container-box .col-md-8 .box-wrapper,
   .container.container-box .col-xs-12 .box-wrapper {
-    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    background: #1a1a1a9f !important;
     border: 1px solid #ffd700 !important;
     color: #ffd700 !important;
   }
