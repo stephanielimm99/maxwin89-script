@@ -157,9 +157,11 @@
   }
   .container.container-box .col-md-8 .box-wrapper,
   .container.container-box .col-xs-12 .box-wrapper {
-    background: #1a1a1ab9 !important;
+    background: rgba(26, 26, 26, 0.747) !important;
     border: 1px solid #ffd700 !important;
     color: #ffd700 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
   }
   .col-md-8 .box-wrapper .info-box--001,
   .col-xs-12 .box-wrapper .info-box--001 {
