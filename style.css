@@ -5,8 +5,8 @@
   STYLE TAMPILAN MS
 ==========================
 */
-    .menu-bottom .footericon-single a {
-    font-weight: bold;
+  .menu-bottom .footericon-single a {
+    font-weight: bold !important;
   }
   .scroll-wrapper[_home] .btn-box div {
     font-weight: bold;
@@ -58,16 +58,11 @@
   .side-nav-items > .nav-item > a {
     font-weight: bold !important;
   }
-  .btn-primary {
-    font-weight: bold !important;
-  }
-  .btn-secondary {
-    font-weight: bold !important;
-  }
   .promotion-page .g_category-nav .nav-item .navlink {
     font-weight: bold !important;
   }
   .main.nav-wrapper .nav-item .navlink {
+    border-radius: 10px !important;
     font-weight: bold;
   }
   .main.nav-wrapper .main-nav a.active,
@@ -103,9 +98,6 @@
     color: #ffffff !important;
     border-radius: 15px !important;
   }
-  .main.nav-wrapper .nav-item .navlink {
-    border-radius: 10px !important;
-  }
   .nav-item {
     border-radius: 10px !important;
   }
@@ -119,9 +111,6 @@
   .top-bar a,
   .top-bar button {
     color: #543e10 !important;
-  }
-  .menu-bottom .footericon-single a {
-    font-weight: bold !important;
   }
   .row {
     padding-top: 5px !important;
@@ -294,7 +283,7 @@
   }
 
 body.desktop {
-  background-image: url("https://files.sitestatic.net/CustomFiles/202604252051300000001af6260944__MAXWIN89__3840x2160.webp") !important;
+  background-image: url("https://files.sitestatic.net/CustomFiles/202604252119080000009aedfe920b__MAXWIN89__1920x1080.webp") !important;
   background-size: cover !important;
   background-position: center top !important;
   background-repeat: no-repeat !important;
@@ -386,7 +375,7 @@ body.mobile .apk-down-bar {
   display: none !important;
 }
 body.mobile {
-  background-image: url("https://files.sitestatic.net/CustomFiles/20260425205122000000cffa8ca18b__MAXWIN89__1704x6610.webp") !important;
+  background-image: url("https://files.sitestatic.net/CustomFiles/2026042521191500000058c124753b__MAXWIN89__426x1652.webp") !important;
   background-size: cover !important;
 }
 body.mobile .ann-wrapper {
