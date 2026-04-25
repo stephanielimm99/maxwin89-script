@@ -300,7 +300,14 @@ body.desktop {
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
 }
-
+.header-wrapper {
+  background-color: #00000000 !important;
+}
+body.desktop,
+body.desktop .page-wrapper,
+body.desktop .main-wrapper {
+  background-color: transparent !important;
+}
 body.desktop .app-wrapper.container {
   border-left: 4px solid #000000!important;
   border-right: 4px solid #000000!important;
