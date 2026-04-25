@@ -146,18 +146,12 @@
   .register-form .submit-box a {
     color: #fd2c2c !important;
   }
-  .acc_safety_info.box-wrapper,
-  .box-wrapper.deposit-notice-wrapper {
-    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
-    border: 1px solid #ffd700 !important;
-    color: #ffd700 !important;
-  }
   .deposit-notice-content h4 {
     color: #ffffff !important;
   }
   .container.container-box .col-md-8 .box-wrapper,
   .container.container-box .col-xs-12 .box-wrapper {
-    background: rgba(26, 26, 26, 0.788) !important;
+    background: rgba(26, 26, 26, 0.842) !important;
     border: 1px solid #ffd700 !important;
     color: #ffd700 !important;
     padding-left: 8px !important;
