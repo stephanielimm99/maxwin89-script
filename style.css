@@ -146,6 +146,12 @@
   .register-form .submit-box a {
     color: #fd2c2c !important;
   }
+  .acc_safety_info.box-wrapper,
+  .box-wrapper.deposit-notice-wrapper {
+    background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+    border: 1px solid #ffd700 !important;
+    color: #ffd700 !important;
+  }
   .deposit-notice-content h4 {
     color: #ffffff !important;
   }
@@ -287,6 +293,164 @@
    color: #ffd84d !important; 
   }
 
+body.desktop {
+  background-image: url("https://files.sitestatic.net/CustomFiles/20260424190445000000cb4802d22a__MAXWIN89__3840x2160.webp") !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+.header-wrapper {
+  background-color: #00000000 !important;
+}
+body.desktop,
+body.desktop .page-wrapper,
+body.desktop .main-wrapper {
+  background-color: transparent !important;
+}
+body.desktop .app-wrapper.container {
+  border-left: 4px solid #000000!important;
+  border-right: 4px solid #000000!important;
+  border-bottom: 4px solid #000000!important;
+  box-shadow:
+    -12px 0 28px rgba(0, 0, 0, 0.85),
+    12px 0 28px rgba(0, 0, 0, 0.85),
+    0 10px 28px rgba(0, 0, 0, 0.75) !important;
+}
+
+body.desktop .carousel-fixed-height {
+  border: none !important;
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.95),
+    0 8px 18px rgba(255,215,0,.25) !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+.jp-provider-div {
+  background-color: #000000b4 !important; 
+}
+.desktop .g-slider-wrapper .game-box,
+.desktop .g-slider-wrapper div.game-box.round {
+  background: #00000000 !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 50% !important;
+}
+.hot-games-heading {
+  font-family: 'Sekuya' !important;
+  text-transform: uppercase !important;
+  font-size: 20px !important;
+  letter-spacing: 0 !important;
+  color: #ffd700  !important;
+  -webkit-text-fill-color: #ffd700 !important;
+  text-shadow: none !important;
+}
+.desktop .site-footer {
+ background-color: #000000a4 !important; 
+}
+.container.sub-games,
+.container.promo-view,
+.container.pt-4,
+.register.container .row {
+  background: #000000c7 !important;
+  box-shadow:
+    -2px 0 2px rgba(0,0,0,.75),
+     2px 0 2px rgba(0,0,0,.75),
+     0 4px 2px rgba(0,0,0,.75) !important;
+}
+.games-slider-menu a.btn-box {
+  background: linear-gradient(180deg, #3a3a3a, #1a1a1a) !important;
+}
+body.desktop .container-wrapper.acc .container-box .row,
+body.desktop .content.my01 > .container,
+.desktop .container.container-box.info-view,
+.desktop .container.container-box.noSidePadding {
+ background-color: #000000d5 !important; 
+}
+.desktop .info-nav.nav-icon .row.no-gutters a {
+  color: #ffffff !important;
+}
+
+/*
+==========================
+  MOBILE
+==========================
+*/
+body.mobile .top-bar .inner-header {
+  background: linear-gradient(1turn, #7f6426, #fbf59f 50.13%, #8a7132) !important;
+}
+body.mobile .top-bar .inner-header .logo img,
+body.mobile .top-bar .inner-header img.img-fluid {
+  filter:
+    drop-shadow(0 3px 3px #000)
+    drop-shadow(0 0 8px rgba(255, 215, 0, .75)) !important;
+  transform: translateY(-2px) !important;
+}
+body.mobile #apk-down-bar,
+body.mobile .apk-down-bar {
+  display: none !important;
+}
+body.mobile {
+  background-image: url("https://files.sitestatic.net/CustomFiles/202604242039210000008cb981a4f9__MAXWIN89__1704x6610.webp") !important;
+  background-size: cover !important;
+}
+body.mobile .ann-wrapper {
+  background-color: #0000009c !important; 
+}
+body.mobile .deposit-withdraw-div.black-bg {
+  background-color: #00000000 !important; 
+}
+body.mobile .jp-provider-div {
+ background-color: rgba(0, 0, 0, 0.336) !important; 
+}
+body.mobile .info-section.u-section-box--bg,
+body.mobile .row.black-bg,
+body.mobile .deposit-withdraw-section,
+body.mobile .footer-content.clearfix {
+ background-color: rgba(0, 0, 0, 0) !important; 
+}
+body.mobile .g-slider-wrapper .game-box,
+body.mobile .g-slider-wrapper div.game-box.round {
+  background: #00000000 !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 50% !important;
+}
+body.mobile .container.container-box.info-view,
+body.mobile .container.pt-1.games-category {
+  background: #000000ad  !important;
+}
+body.mobile .info-nav.nav-icon .row.no-gutters a {
+  color: #ffffff !important;
+}
+.deposit-withdraw-div .deposit-withdraw-section .support-div .support-box .support-card .support-content .support-font,
+.deposit-withdraw-div .deposit-withdraw-section .support-div .support-box .support-card .support-content .line-font {
+  color: #ffffff !important;
+}
+body.mobile .container-wrapper.acc .content .row.history,
+body.mobile .container-wrapper.acc .content .pb-4.pb-md-0.col-md-8,
+body.mobile .memo_page,
+body.mobile .content.my01 > .container,
+body.mobile .container.my_promo_view .container-box.noSidePadding,
+body.mobile .mdc-tab-scroller__scroll-content {
+  background: #1a1a1ac0 !important;
+}
+body.mobile .side-nav-items,
+body.mobile .wallet-bal .row.text-left,
+body.mobile .nav-item-content span.circle {
+  background: linear-gradient(1turn, #7f6426, #fbf59f 50.13%, #8a7132) !important;
+}
+body.mobile .nav-item-content.open {
+  background: linear-gradient(1turn, #525252, #9c9c9c 50.13%, #525252) !important;
+}
+body.mobile .nav-content .submenu li a {
+  color : #000000 !important;
+  font-weight: 700 !important;
+}
+body.mobile .wallet-bal .btn-refresh-wallet.pull-right {
+  background: linear-gradient(180deg, #d8cd00, #ffb300) !important;
+}
+body.mobile .carousel-indicators li {
+  background: #00000000!important;
+}
 /*
 ==========================
   STYLE MENU HAMBURGER
