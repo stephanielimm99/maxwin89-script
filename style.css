@@ -294,7 +294,7 @@ body.desktop {
   background-size: cover !important;
   background-position: center top !important;
   background-repeat: no-repeat !important;
-  min-height: 170px !important;
+  min-height: 80px !important;
 }
 
 body.desktop .app-wrapper.container {
