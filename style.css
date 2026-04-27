@@ -292,9 +292,8 @@ body.desktop {
 .header-wrapper {
   background-image: url("https://imgstorage.site/view/faker/untitled-design-82.png") !important;
   background-size: cover !important;
-  background-position: center top !important;
+  background-position: center center !important;
   background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
 }
 
 body.desktop .app-wrapper.container {
