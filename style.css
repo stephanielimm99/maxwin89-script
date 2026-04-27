@@ -291,12 +291,11 @@ body.desktop {
 }
 .header-wrapper {
   background-image: url("https://imgstorage.site/view/faker/untitled-design-82.png") !important;
-  background-size: cover !important;
+  background-size: auto 100% !important;
   background-position: center top !important;
   background-repeat: no-repeat !important;
-  min-height: 80px !important;
+  min-height: 140px !important;
 }
-
 body.desktop .app-wrapper.container {
   border-left: 4px solid #000000!important;
   border-right: 4px solid #000000!important;
